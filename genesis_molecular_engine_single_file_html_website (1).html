@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Genesis Molecular Engine, Inc. — AI-assisted drug discovery workflow.  interface for pipeline, technology, AEON, and investor overview." />
+  <meta property="og:title" content="Genesis Molecular Engine, Inc." />
+  <meta property="og:description" content="AI-assisted drug discovery • Pipeline • AEON • Investor" />
+  <meta name="theme-color" content="#030712" />
+  <title>Genesis Molecular Engine, Inc.</title>
+  <style>
+    /* =============================================
+       Genesis Molecular Engine, Inc. — 
+       Single-file HTML (professional upgrade)
+       ============================================= */
+    :root{
+      --bg0:#030712;
+      --bg1:#020617;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.10);
+      --strokeStrong:rgba(255,255,255,.14);
+      --strokeBrand:rgba(34,211,238,.20);
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --brand:#22d3ee;
+      --brand2:#60a5fa;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --bad:#fb7185;
+      --shadow: 0 22px 55px rgba(0,0,0,.48);
+      --shadow2: 0 10px 28px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1180px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(900px 600px at 18% 8%, rgba(96,165,250,.18), transparent 60%),
+        radial-gradient(820px 620px at 82% 26%, rgba(34,211,238,.14), transparent 62%),
+        radial-gradient(720px 520px at 58% 92%, rgba(34,211,238,.08), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    button{font:inherit}
+
+    /* Particle canvas */
+    #particles{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:.85;
+    }
+
+    /* Layout */
+    .wrap{position:relative; z-index:1;}
+    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto;}
+
+    /* Top bar */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(2,6,23,.88), rgba(2,6,23,.58));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      letter-spacing:.2px;
+      font-weight:750;
+      white-space:nowrap;
+    }
+    .mark{
+      width:34px; height:34px;
+      border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(34,211,238,.8), transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(96,165,250,.7), transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 0 0 1px rgba(34,211,238,.10), 0 12px 30px rgba(34,211,238,.10);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .mark:after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: conic-gradient(from 180deg, transparent, rgba(34,211,238,.34), transparent, rgba(96,165,250,.28), transparent);
+      animation: spin 8s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .brand small{
+      display:block;
+      font-weight:600;
+      color:rgba(148,163,184,.92);
+      letter-spacing:.75px;
+      text-transform:uppercase;
+      font-size:10.5px;
+      margin-top:2px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      color:rgba(229,231,235,.92);
+      font-size:13.5px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition: all .18s ease;
+    }
+    .nav a:hover{
+      border-color:rgba(34,211,238,.18);
+      background:rgba(34,211,238,.06);
+      transform: translateY(-1px);
+    }
+
+    .ctaRow{display:flex; gap:10px; align-items:center;}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      user-select:none;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.02);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color:rgba(34,211,238,.22);
+      background: rgba(34,211,238,.08);
+      box-shadow: 0 0 0 1px rgba(34,211,238,.08), 0 12px 26px rgba(0,0,0,.22);
+    }
+    .btn:active{transform: translateY(0)}
+
+    .btn.primary{
+      border-color: rgba(34,211,238,.30);
+      background:
+        radial-gradient(120% 200% at 20% 10%, rgba(34,211,238,.25), transparent 60%),
+        radial-gradient(120% 200% at 80% 90%, rgba(96,165,250,.22), transparent 60%),
+        rgba(255,255,255,.06);
+      box-shadow: 0 0 0 1px rgba(34,211,238,.12), 0 16px 46px rgba(34,211,238,.12);
+    }
+
+    .btn.ghost{
+      background: rgba(0,0,0,.14);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .btn .dot{
+      width:8px;height:8px;border-radius:999px;background:var(--brand);
+      box-shadow: 0 0 0 3px rgba(34,211,238,.14);
+    }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      color: rgba(229,231,235,.88);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+    }
+
+    /* Hero */
+    header.hero{
+      padding:74px 0 28px;
+      background: linear-gradient(180deg, rgba(2,6,23,0), rgba(2,6,23,.92));
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr;}
+      header.hero{padding:58px 0 24px;}
+      .ctaRow{display:none;}
+    }
+
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      color:rgba(229,231,235,.92);
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(34,211,238,.16);
+      background: rgba(34,211,238,.06);
+      box-shadow: 0 0 0 1px rgba(34,211,238,.06);
+      font-size:13px;
+      width: fit-content;
+    }
+    .kicker span{color:var(--muted)}
+
+    h1{
+      font-size: clamp(36px, 4.2vw, 56px);
+      line-height:1.02;
+      margin:16px 0 12px;
+      letter-spacing:-.6px;
+    }
+
+    .gradientText{
+      background: linear-gradient(90deg, rgba(34,211,238,1), rgba(96,165,250,1));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      color:rgba(229,231,235,.88);
+      font-size:16px;
+      line-height:1.70;
+      max-width: 66ch;
+      margin:0 0 18px;
+    }
+
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;}
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    @media (max-width: 620px){ .stats{grid-template-columns: 1fr;} }
+
+    .stat{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      padding:14px;
+      box-shadow: var(--shadow2);
+    }
+    .stat b{display:block; font-size:18px; letter-spacing:-.2px;}
+    .stat small{color:var(--muted)}
+
+    .card{
+      border-radius: var(--radius2);
+      background:
+        radial-gradient(1000px 500px at 20% 10%, rgba(34,211,238,.10), transparent 55%),
+        radial-gradient(900px 500px at 90% 80%, rgba(96,165,250,.10), transparent 55%),
+        rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .sideCard{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height: 100%;
+    }
+
+    .chipRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;}
+    .chip{
+      font-size:12px;
+      color:rgba(229,231,235,.9);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:6px 10px;
+      border-radius: 999px;
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(34,211,238,.25), rgba(96,165,250,.25), transparent);
+      opacity:.95;
+      margin:10px 0;
+    }
+
+    .mini{color: var(--muted); font-size: 13px; line-height:1.58;}
+
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      color: rgba(229,231,235,.92);
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      overflow:auto;
+    }
+
+    /* Sections */
+    section{
+      padding: 52px 0;
+      background: linear-gradient(180deg, rgba(2,6,23,.92), rgba(2,6,23,.92));
+    }
+    section .head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+    h2{margin:0; font-size:28px; letter-spacing:-.35px}
+    .subhead{margin:6px 0 0; color:var(--muted); max-width:78ch; line-height:1.65}
+
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px;}
+    .contact-grid{align-items:stretch;}
+    .contact-panel{display:flex; flex-direction:column; height:100%;}
+    .contact-panel form{height:100%;}
+    .contact-panel .timeline{flex:1;}
+    .col-4{grid-column: span 4;}
+    .col-5{grid-column: span 5;}
+    .col-6{grid-column: span 6;}
+    .col-7{grid-column: span 7;}
+    .col-8{grid-column: span 8;}
+    .col-12{grid-column: span 12;}
+
+    @media (max-width: 980px){
+      .col-4,.col-6,.col-8{grid-column: span 12;}
+    }
+
+    .panel{
+      padding:18px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+    }
+
+    .panel h3{margin:0 0 8px; font-size:16px; letter-spacing:-.25px}
+    .panel p{margin:0; color:rgba(229,231,235,.86); line-height:1.68; font-size:14px}
+
+    .icon{
+      width:36px;height:36px;border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(34,211,238,.18);
+      background: rgba(34,211,238,.06);
+      box-shadow: 0 0 0 1px rgba(34,211,238,.06);
+      margin-bottom:10px;
+    }
+
+    .timeline{display:flex; flex-direction:column; gap:10px;}
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:14px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .step b{display:block; font-size:14px; margin-bottom:2px}
+    .step small{color:var(--muted); line-height:1.60}
+    .badge{
+      min-width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      border:1px solid rgba(96,165,250,.22);
+      background: rgba(96,165,250,.08);
+      color:rgba(229,231,235,.95);
+      font-weight:800;
+    }
+
+    .quote{
+      padding:16px;
+      border-radius: 20px;
+      border:1px solid rgba(34,211,238,.14);
+      background:
+        radial-gradient(900px 280px at 20% 10%, rgba(34,211,238,.12), transparent 60%),
+        rgba(34,211,238,.05);
+      color: rgba(229,231,235,.92);
+      line-height:1.68;
+      font-size:14px;
+    }
+
+    /* Pills / table */
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: rgba(229,231,235,.92);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .pill i{width:8px;height:8px;border-radius:999px;background:var(--ok); box-shadow:0 0 0 3px rgba(52,211,153,.12)}
+
+    .table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .table th, .table td{padding: 12px 14px; text-align:left; font-size: 13px;}
+    .table th{color: rgba(229,231,235,.92); background: rgba(0,0,0,.18);}
+    .table td{color: rgba(229,231,235,.86); border-top:1px solid rgba(255,255,255,.07)}
+
+    /* Contact */
+    form{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    form .full{grid-column: span 2;}
+    @media (max-width: 720px){ form{grid-template-columns: 1fr;} form .full{grid-column: span 1;} }
+
+    .field{display:flex; flex-direction:column; gap:8px;}
+    label{font-size:12px; color: var(--muted)}
+    input, textarea{
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 12px 12px;
+      color: var(--text);
+      outline:none;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    textarea{min-height: 120px; resize: vertical;}
+    input:focus, textarea:focus{border-color: rgba(34,211,238,.30); box-shadow: 0 0 0 4px rgba(34,211,238,.10);}
+
+    .hint{color: var(--muted); font-size: 12px; line-height:1.5}
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      max-width: 440px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(2,6,23,.86);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      display:none;
+    }
+    .toast.show{display:block; animation: toastIn .22s ease-out;}
+    @keyframes toastIn{from{transform: translateY(10px); opacity:0} to{transform: translateY(0); opacity:1}}
+
+    footer{
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(2,6,23,.92), rgba(2,6,23,.98));
+    }
+
+    .muted{color:var(--muted)}
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    /* Smooth anchor offset (for sticky nav) */
+    [id]{scroll-margin-top: 92px;}
+
+    /* Subtle motion */
+    .float{animation: float 6s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform: translateY(0)} 50%{transform: translateY(-6px)}}
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+    }
+
+    html{scroll-behavior:smooth;}
+  </style>
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="Genesis Molecular Engine, Inc.">
+          <span class="mark" aria-hidden="true"></span>
+          <span>
+            Genesis Molecular Engine, Inc.
+            
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#technology">Technology</a>
+          <a href="#aeon">AEON</a>
+          <a href="#investor">Investor</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="ctaRow">
+          <button class="btn ghost" id="btnFramework" type="button" title="Jump to pipeline">
+            <span class="dot" aria-hidden="true"></span>
+            Explore
+          </button>
+          <a class="btn primary" id="btnDeck" href="#investor" title="Jump to investor section">
+            <span class="dot" aria-hidden="true"></span>
+            Investor
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- HERO -->
+      <header class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="kicker"><b class="gradientText">AI-assisted</b> <span>drug discovery workflow</span> <span class="kbd">v0</span></div>
+            <h1>
+              Accelerating therapeutic discovery —
+              <span class="gradientText">from concept to validation-ready candidates</span>
+            </h1>
+            <p class="lead">
+              Genesis Molecular Engine, Inc. is a pipeline-first discovery interface that helps teams generate, evaluate, and prioritize small‑molecule candidates with scientific rigor.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#pipeline"><span class="dot" aria-hidden="true"></span>View Pipeline</a>
+              <a class="btn" href="#technology">Technology Stack</a>
+              <a class="btn" href="#contact">Partnerships</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <b>Repeatable workflow</b>
+                <small>Generate → Screen → Prioritize</small>
+              </div>
+              <div class="stat">
+                <b>Multi-signal scoring</b>
+                <small>Docking + ADMET + novelty</small>
+              </div>
+              <div class="stat">
+                <b>Audit-ready outputs</b>
+                <small>Reports for partners & diligence</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="card sideCard float">
+            <div>
+              <h3 style="margin:0 0 6px; font-size:16px;">Platform Snapshot</h3>
+              <p class="mini" style="margin:0;">A concise view of modules the platform can expose as the roadmap progresses.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="chipRow" aria-label="Modules">
+              <span class="chip">Molecule Generation</span>
+              <span class="chip">Docking</span>
+              <span class="chip">ADMET</span>
+              <span class="chip">Novelty</span>
+              <span class="chip">Codex Logs</span>
+              <span class="chip">AEON Layer</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="quote">
+              <b style="display:block; margin-bottom:6px;">Mission</b>
+              Enable rational candidate selection by integrating computational chemistry signals into a single, auditable narrative:
+              <i>what changed, why it matters, and what decision follows.</i>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mono" aria-label="Example log">
+              [GENESIS.LOG] target=HIV-1 protease
+              score=-9.3 (smina)
+              filters: qed=0.44, alerts=2
+              action: reduce reactive motifs; preserve binding contacts
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn" href="#about">What is Genesis?</a>
+              <a class="btn" href="#investor">Investor Overview</a>
+            </div>
+
+            <p class="hint" style="margin:2px 0 0;">
+              For external use, replace example metrics with validated results and cite datasets/tools.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="container">
+          <div class="head">
+            <div>
+              <h2>About</h2>
+              <p class="subhead">
+                Genesis is a modular discovery workflow that converts molecule generation into repeatable, auditable decision steps.
+                It supports early discovery today while providing a clear path toward a scalable platform.
+              </p>
+            </div>
+            <span class="pill"><i></i> Operating Mode: Prototype → Platform</span>
+          </div>
+
+          <div class="grid">
+            <div class="panel col-4">
+              <div class="icon">⚗️</div>
+              <h3>Compound design</h3>
+              <p>Generate analog families with constraints (scaffolds, warheads, property windows) and capture the rationale for each change.</p>
+            </div>
+            <div class="panel col-4">
+              <div class="icon">🧪</div>
+              <h3>Screening signals</h3>
+              <p>Docking + risk flags + novelty similarity checks, consolidated into an explainable prioritization record.</p>
+            </div>
+            <div class="panel col-4">
+              <div class="icon">📜</div>
+              <h3>Codex logs</h3>
+              <p>Each candidate receives a “scroll”: metrics, decisions, and next experiments — exportable for partners and investors.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PIPELINE -->
+      <section id="pipeline">
+        <div class="container">
+          <div class="head">
+            <div>
+              <h2>Pipeline</h2>
+              <p class="subhead">A practical end‑to‑end workflow designed for immediate execution and long‑term scalability.</p>
+            </div>
+            <a class="btn" href="#contact">Request collaboration</a>
+          </div>
+
+          <div class="grid">
+            <div class="panel col-6">
+              <h3 style="margin-top:0">Core flow</h3>
+              <div class="timeline" role="list">
+                <div class="step" role="listitem">
+                  <div class="badge">1</div>
+                  <div>
+                    <b>Target definition</b>
+                    <small>Select receptor/PDB, define binding constraints, and choose a measurable success criterion.</small>
+                  </div>
+                </div>
+                <div class="step" role="listitem">
+                  <div class="badge">2</div>
+                  <div>
+                    <b>Analog generation</b>
+                    <small>Generate structurally coherent candidates with design notes and property constraints.</small>
+                  </div>
+                </div>
+                <div class="step" role="listitem">
+                  <div class="badge">3</div>
+                  <div>
+                    <b>Docking + validation</b>
+                    <small>Rank by binding score, then validate pose quality and key interactions.</small>
+                  </div>
+                </div>
+                <div class="step" role="listitem">
+                  <div class="badge">4</div>
+                  <div>
+                    <b>ADMET triage</b>
+                    <small>Filter red flags (e.g., hERG/AMES/DILI) and iterate designs to reduce risk.</small>
+                  </div>
+                </div>
+                <div class="step" role="listitem">
+                  <div class="badge">5</div>
+                  <div>
+                    <b>Candidate shortlist</b>
+                    <small>Export the best set with full tables and rationale for partner review or wet-lab planning.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel col-6">
+              <h3 style="margin-top:0">Outputs</h3>
+              <p class="mini">Each run produces artifacts suitable for partner communication and diligence packets.</p>
+              <div class="divider"></div>
+              <div class="grid" style="gap:12px;">
+                <div class="panel col-12" style="background:rgba(0,0,0,.14)">
+                  <h3>Candidate table</h3>
+                  <p>SMILES, docking scores, property metrics, alerts, novelty similarity, and recommended next action.</p>
+                </div>
+                <div class="panel col-12" style="background:rgba(0,0,0,.14)">
+                  <h3>Codex report (PDF/HTML)</h3>
+                  <p>A narrative report: what changed, why it matters, and the recommended experiments to validate the hypothesis.</p>
+                </div>
+                <div class="panel col-12" style="background:rgba(0,0,0,.14)">
+                  <h3>Partner summary</h3>
+                  <p>Executive-ready brief: program objective, key results, roadmap, and collaboration request.</p>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <p class="mini muted">Note: Replace any placeholder metrics with validated results before external publication.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNOLOGY -->
+      <section id="technology">
+        <div class="container">
+          <div class="head">
+            <div>
+              <h2>Technology</h2>
+              <p class="subhead">A modular stack — start lightweight, then deepen into automated modeling and learning loops as evidence grows.</p>
+            </div>
+            <a class="btn" href="#aeon">Meet AEON</a>
+          </div>
+
+          <div class="grid">
+            <div class="panel col-4">
+              <div class="icon">🧠</div>
+              <h3>AI generation</h3>
+              <p>Template-constrained generation for analog families, with optional reinforcement on success signals.</p>
+            </div>
+            <div class="panel col-4">
+              <div class="icon">🧬</div>
+              <h3>Cheminformatics</h3>
+              <p>Descriptor pipelines for sanitization, alerts, similarity search, clustering, and reporting.</p>
+            </div>
+            <div class="panel col-4">
+              <div class="icon">🎯</div>
+              <h3>Docking layer</h3>
+              <p>Pose generation and scoring workflows with reproducible settings and parameter logging.</p>
+            </div>
+
+            <div class="panel col-6">
+              <h3>Quality gates</h3>
+              <p>Filters for PAINS/alerts, rule-of-five, and toxicity predictors — treated as first-class data in decision making.</p>
+            </div>
+            <div class="panel col-6">
+              <h3>Export & auditability</h3>
+              <p>Export to PDF/HTML/CSV with timestamps and run parameters to support internal review and partner replication.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AEON -->
+      <section id="aeon">
+        <div class="container">
+          <div class="head">
+            <div>
+              <h2>AEON Layer</h2>
+              <p class="subhead">Decision intelligence that turns computational outputs into clear, action-oriented explanations.</p>
+            </div>
+            <span class="pill"><i style="background:var(--brand)"></i> AEON: Explain → Recommend → Remember</span>
+          </div>
+
+          <div class="grid">
+            <div class="panel col-8">
+              <h3>What AEON does</h3>
+              <p>
+                AEON tracks why each molecular change was made and how it affected outcomes.
+                It summarizes trade-offs (potency vs. safety), proposes next design moves, and keeps an audit trail.
+              </p>
+              <div class="divider"></div>
+              <div class="quote">
+                <b style="display:block; margin-bottom:6px;">Example AEON insight</b>
+                “Docking improved after increasing hydrophobic bulk, but risk flags increased. Next iteration: reduce reactive motifs,
+                preserve binding contacts, and re-balance polarity into a safer region.”
+              </div>
+            </div>
+            <div class="panel col-4">
+              <h3>AEON modules</h3>
+              <div class="chipRow">
+                <span class="chip">Design Memory</span>
+                <span class="chip">Risk Triage</span>
+                <span class="chip">Roadmap Hints</span>
+                <span class="chip">Partner Briefs</span>
+              </div>
+              <div class="divider"></div>
+              <p class="mini">Optional extensions: dataset-backed confidence scoring and continuous improvement as validated results are incorporated.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INVESTOR -->
+      <section id="investor">
+        <div class="container">
+          <div class="head">
+            <div>
+              <h2>Investor Overview</h2>
+              <p class="subhead">A concise overview: scientific thesis, execution milestones, and how capital accelerates progress.</p>
+            </div>
+            <a class="btn primary" href="#contact"><span class="dot" aria-hidden="true"></span>Talk to us</a>
+          </div>
+
+          <div class="grid">
+            <div class="panel col-6">
+              <h3>Thesis</h3>
+              <p>
+                The fastest path to value is a disciplined, repeatable discovery loop: generate high‑quality analog families,
+                evaluate them across orthogonal signals, and deliver decision‑ready candidate packages suitable for partnership or validation.
+              </p>
+              <div class="divider"></div>
+              <h3>Milestones</h3>
+              <table class="table" aria-label="Milestones">
+                <thead>
+                  <tr><th>Quarter</th><th>Deliverable</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Q1</td><td>Validated pipeline demo + exportable reports</td></tr>
+                  <tr><td>Q2</td><td>Partner pilots + curated target programs</td></tr>
+                  <tr><td>Q3</td><td>Improved scoring + automated learning loop</td></tr>
+                  <tr><td>Q4</td><td>Candidate packages for wet lab validation</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="panel col-6">
+              <h3>What funding enables</h3>
+              <p class="mini">Concrete, diligence-friendly uses of capital.</p>
+              <div class="divider"></div>
+              <div class="timeline">
+                <div class="step"><div class="badge">A</div><div><b>Compute & tooling</b><small>Higher-throughput screening, validation runs, and reproducible infrastructure.</small></div></div>
+                <div class="step"><div class="badge">B</div><div><b>Data partnerships</b><small>Benchmarks, curated assays, and external validation pathways.</small></div></div>
+                <div class="step"><div class="badge">C</div><div><b>Team expansion</b><small>Cheminformatics, ML, and business development to ship and commercialize the platform.</small></div></div>
+              </div>
+              <div class="divider"></div>
+              <p class="mini muted">Note: Valuation discussions should be supported by demonstrable traction, defensible IP, and comparable market data.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="container">
+          <div class="head">
+            <div>
+              <h2>Contact</h2>
+              <p class="subhead">For partnerships, pilot studies, or investor discussions. This form generates a local email draft.</p>
+            </div>
+            <span class="pill"><i style="background:var(--warn); box-shadow:0 0 0 3px rgba(251,191,36,.12)"></i> Email draft (local)</span>
+          </div>
+
+          <div class="grid contact-grid">
+            <div class="panel col-7 contact-panel">
+              <form id="contactForm">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="you@domain.com" required />
+                </div>
+                <div class="field full">
+                  <label for="subject">Subject</label>
+                  <input id="subject" name="subject" placeholder="Partnership / Pilot / Investor" required />
+                </div>
+                <div class="field full">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Tell us what you’re looking for…" required></textarea>
+                </div>
+                <div class="field full" style="display:flex; gap:10px; flex-direction:row; flex-wrap:wrap; align-items:center;">
+                  <button class="btn primary" type="submit"><span class="dot" aria-hidden="true"></span>Generate Email</button>
+                  <button class="btn" type="button" id="copyBtn">Copy message</button>
+                  <span class="hint" id="contactHint">No data is sent from this page. Your email client opens locally.</span>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel col-5 contact-panel">
+              <h3>Partnership tracks</h3>
+              <p class="mini">Select a track and we will reply with next steps.</p>
+              <div class="divider"></div>
+              <div class="timeline" style="gap:14px">
+                <div class="step" style="background:linear-gradient(180deg,rgba(34,211,238,.06),rgba(255,255,255,.03)); border-color:rgba(34,211,238,.22)"><div class="badge">1</div><div><b>Wet-lab validation</b><small>Shortlist candidates + assay plan + data-sharing workflow.</small></div></div>
+                <div class="step" style="background:linear-gradient(180deg,rgba(96,165,250,.06),rgba(255,255,255,.03)); border-color:rgba(96,165,250,.22)"><div class="badge">2</div><div><b>Research collaboration</b><small>Target program + joint publication / IP strategy.</small></div></div>
+                <div class="step" style="background:linear-gradient(180deg,rgba(34,211,238,.04),rgba(255,255,255,.03));"><div class="badge">3</div><div><b>Platform licensing</b><small>Custom workflow + reporting + internal enablement.</small></div></div>
+              </div>
+              <div class="divider"></div>
+              <p class="mini muted">Replace placeholders with your official company contact details once finalized.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;">
+          <div>
+            <b style="color:rgba(229,231,235,.92)">Genesis Molecular Engine, Inc.</b>
+            <span class="muted"> • </span>
+          </div>
+          <div class="muted">© <span id="year"></span> Genesis Molecular Engine, Inc.</div>
+        </div>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+    // =========================
+    // Particles (lightweight, canvas)
+    // =========================
+    (function(){
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      const DPR = Math.min(2, window.devicePixelRatio || 1);
+
+      let w=0,h=0;
+      function resize(){
+        w = canvas.width = Math.floor(window.innerWidth * DPR);
+        h = canvas.height = Math.floor(window.innerHeight * DPR);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const N = prefersReduced ? 36 : 84;
+      const pts = [];
+      for(let i=0;i<N;i++){
+        pts.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          vx: (Math.random()-.5)*0.18*DPR,
+          vy: (Math.random()-.5)*0.18*DPR,
+          r: (Math.random()*1.6+0.6)*DPR,
+          t: Math.random()*Math.PI*2
+        })
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+
+        // Soft vignette
+        const g = ctx.createRadialGradient(w*0.5,h*0.5, Math.min(w,h)*0.22, w*0.5,h*0.5, Math.max(w,h)*0.74);
+        g.addColorStop(0,'rgba(0,0,0,0)');
+        g.addColorStop(1,'rgba(0,0,0,0.38)');
+        ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+
+        // Links
+        for(let i=0;i<pts.length;i++){
+          const a=pts[i];
+          for(let j=i+1;j<pts.length;j++){
+            const b=pts[j];
+            const dx=a.x-b.x, dy=a.y-b.y;
+            const d2=dx*dx+dy*dy;
+            const max= (160*DPR);
+            if(d2<max*max){
+              const alpha = 1 - Math.sqrt(d2)/(max);
+              ctx.strokeStyle = `rgba(34,211,238,${alpha*0.10})`;
+              ctx.lineWidth = 1*DPR;
+              ctx.beginPath();
+              ctx.moveTo(a.x,a.y);
+              ctx.lineTo(b.x,b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Points
+        for(const p of pts){
+          p.t += 0.01;
+          p.x += p.vx + Math.sin(p.t)*0.03*DPR;
+          p.y += p.vy + Math.cos(p.t)*0.03*DPR;
+          if(p.x<0) p.x=w; if(p.x>w) p.x=0;
+          if(p.y<0) p.y=h; if(p.y>h) p.y=0;
+
+          ctx.beginPath();
+          ctx.fillStyle='rgba(96,165,250,.30)';
+          ctx.arc(p.x,p.y,p.r*2.1,0,Math.PI*2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.fillStyle='rgba(229,231,235,.62)';
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        }
+
+        if(!prefersReduced) requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // =========================
+    // Navbar CTA behavior
+    // =========================
+    document.getElementById('btnFramework').addEventListener('click', () => {
+      document.querySelector('#pipeline').scrollIntoView({behavior:'smooth'});
+    });
+
+    // =========================
+    // Contact form: local email draft + copy
+    // =========================
+    const toast = document.getElementById('toast');
+    const showToast = (msg) => {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=>toast.classList.remove('show'), 3200);
+    };
+
+    const form = document.getElementById('contactForm');
+    const copyBtn = document.getElementById('copyBtn');
+
+    function buildEmail(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const body =
+`Name: ${name}
+Email: ${email}
+
+${message}
+
+—
+Sent from Genesis Molecular Engine, Inc. website`;
+      return { subject, body };
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const { subject, body } = buildEmail();
+
+      // Replace with your official inbox when ready:
+      const to = 'partnership@genesismolecularengine.com';
+      const url = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      showToast('Opening your email client…');
+      window.location.href = url;
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const { body } = buildEmail();
+      try{
+        await navigator.clipboard.writeText(body);
+        showToast('Copied to clipboard.');
+      }catch{
+        showToast('Copy failed — select and copy manually.');
+      }
+    });
+
+    // Year
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
