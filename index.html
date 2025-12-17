@@ -1059,4 +1059,56 @@
 
       if(openBtn) openBtn.addEventListener('click', openDrawer);
       if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
-      if(backdrop) backdrop.addEventListener('click', 
+      if(backdrop) backdrop.addEventListener('click', closeDrawer);
+
+      document.querySelectorAll('.drawerNav a').forEach(a=>{
+        a.addEventListener('click', closeDrawer);
+      });
+
+      // Footer year
+      const y = document.getElementById('year');
+      if(y) y.textContent = new Date().getFullYear();
+    });
+
+    // =========================
+    // Background molecules (particles)
+    // =========================
+    (function(){
+      const canvas = document.getElementById('particles');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w,h,particles;
+
+      function resize(){
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      particles = Array.from({length: 70}, ()=>({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*1.8+0.6,
+        vx: (Math.random()-.5)*0.25,
+        vy: (Math.random()-.5)*0.25
+      }));
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = 'rgba(96,165,250,.35)';
+        for(const p of particles){
+          p.x+=p.vx; p.y+=p.vy;
+          if(p.x<0||p.x>w) p.vx*=-1;
+          if(p.y<0||p.y>h) p.vy*=-1;
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
