@@ -134,6 +134,26 @@
       justify-content:flex-end;
       min-width:0;
     }
+
+    .hamburger{
+      display:none;
+      font-size:18px;
+      padding:8px 12px;
+      line-height:1;
+    }
+
+    @media (max-width: 720px){
+      .hamburger{display:inline-flex;}
+      .nav{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
+        padding-top:8px;
+      }
+      .nav.open{display:flex;}
+    }
     .nav a{
       color:rgba(229,231,235,.92);
       font-size:13.5px;
@@ -561,7 +581,8 @@
           </span>
         </a>
 
-        <nav class="nav" aria-label="Primary">
+        <button class="btn ghost hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+        <nav class="nav" id="primary-nav" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#pipeline">Pipeline</a>
           <a href="#technology">Technology</a>
@@ -1063,64 +1084,4 @@
     // Navbar CTA behavior
     // =========================
     document.getElementById('btnFramework').addEventListener('click', () => {
-      document.querySelector('#pipeline').scrollIntoView({behavior:'smooth'});
-    });
-
-    // =========================
-    // Contact form: local email draft + copy
-    // =========================
-    const toast = document.getElementById('toast');
-    const showToast = (msg) => {
-      toast.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(()=>toast.classList.remove('show'), 3200);
-    };
-
-    const form = document.getElementById('contactForm');
-    const copyBtn = document.getElementById('copyBtn');
-
-    function buildEmail(){
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      const body =
-`Name: ${name}
-Email: ${email}
-
-${message}
-
-—
-Sent from Genesis Molecular Engine, Inc. website`;
-      return { subject, body };
-    }
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const { subject, body } = buildEmail();
-
-      // Replace with your official inbox when ready:
-      const to = 'partnership@genesismolecularengine.com';
-      const url = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      showToast('Opening your email client…');
-      window.location.href = url;
-    });
-
-    copyBtn.addEventListener('click', async () => {
-      const { body } = buildEmail();
-      try{
-        await navigator.clipboard.writeText(body);
-        showToast('Copied to clipboard.');
-      }catch{
-        showToast('Copy failed — select and copy manually.');
-      }
-    });
-
-    // Year
-    document.getElementById('year').textContent = String(new Date().getFullYear());
-  </script>
-</body>
-</html>
+     
